@@ -17,7 +17,7 @@ gulp.task('serve', function () {
       baseDir: './dist'
     }
   })
-})
+});
 
 // Tarea para procesar el CSS
 gulp.task('css', function () {
@@ -30,18 +30,18 @@ gulp.task('css', function () {
     cssnext({ browsers: ['> 5%', 'ie 8'] }),
     mqpacker(),
     csswring()
-  ]
+  ];
 
   return gulp.src('./src/style.css')
     .pipe(postcss(processors))
     .pipe(gulp.dest('./dist/css'))
     .pipe(browserSync.stream())
-})
+});
 
 // Tarea para vigilar los cambios
 gulp.task('watch', function () {
-  gulp.watch('./src/*.css', ['css'])
-  gulp.watch('./dist/*.html').on('change', browserSync.reload)
-})
+  gulp.watch('./src/*.css', ['css']);
+  gulp.watch('./dist/*.html').on('change', browserSync.reload);
+});
 
-gulp.task('default', ['watch', 'serve'])
+gulp.task('default', ['watch', 'serve']);
